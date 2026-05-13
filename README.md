@@ -48,7 +48,7 @@ This research utilizes the following public video datasets for calibration:
 
 ## Contact & Profile
 * **Researcher**: Johannes Bambang Wirawan
-* **Affiliation**: Professional Master in Robotics Student
+* **Affiliation**: Master in Robotics Student, **Tech Global University**
 * **Email**: jbambangwirawan@gmail.com
 * **Instagram**: [@johanneswirawan](https://www.instagram.com/johanneswirawan/)
 * **Event**: 1SKS Students Edition 2026 via Instagram Live **@JF_Jakarta**
