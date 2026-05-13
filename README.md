@@ -44,6 +44,7 @@ All processing is done with respect to **Kita school** aesthetics and the *Shakk
 ---
 
 ## 🏗️ Repository Structure
+```
 noh-motion-restoration/
 ├── analysis/ # CoG, Ma interval, Kamae stability
 │ ├── compute_cog.py
@@ -63,8 +64,7 @@ noh-motion-restoration/
 ├── .github/workflows/ # (future) CI smoke test
 ├── README.md # This file (trilingual)
 └── LICENSE
-
-text
+```
 
 ---
 
@@ -79,15 +79,23 @@ python -m venv .venv
 # Windows: .venv\Scripts\activate
 # macOS/Linux: source .venv/bin/activate
 pip install -r requirements/requirements.txt
-2. Run Motion Tracking on a Sample Frame
-bash
+```
+
+### 2. Run Motion Tracking on a Sample Frame
+```bash
 python motion_tracking/pose_extractor.py --input data/sample_frames.zip --output results/pose_overlay/
-3. Compute Center of Gravity Trajectory
-bash
+```
+
+### 3. Compute Center of Gravity Trajectory
+```bash
 python analysis/compute_cog.py --landmarks data/landmarks_raw.json --output results/cog_plot.png
-4. (Optional) GAN Restoration on a Low‑Res Clip
-bash
+```
+
+### 4. (Optional) GAN Restoration on a Low‑Res Clip
+```bash
 python restoration/esrgan_upscale.py --input path/to/lowres_video.mp4 --output results/restored.mp4
+```
+
 📚 Datasets & Fair Use
 We use only promotional excerpts (fair use) for academic research:
 
