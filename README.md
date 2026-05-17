@@ -1,162 +1,153 @@
-# Digital Restoration & Motion Capture: Preserving the Essence of Noh Theater via AI 🎭🤖
+# 🎭 Digital Restoration & Motion Capture: Preserving the Essence of Noh Theater via AI
 
-![Python](https://img.shields.io/badge/python-3.9%2B-blue)
+🌍 **Language / Bahasa / 言語**: [English](#english-en) | [Bahasa Indonesia](#bahasa-indonesia-id) | [日本語](#日本語-ja)
+
+![Python](https://img.shields.io/badge/python-3.10-blue)
 ![License: MIT](https://img.shields.io/badge/License-MIT-green)
 ![MediaPipe](https://img.shields.io/badge/MediaPipe-Pose-ff69b4)
 ![OpenCV](https://img.shields.io/badge/OpenCV-4.9-red)
 
+---
+
+## English (EN)
+
 **An interdisciplinary AI pipeline that restores historical Noh archives using GANs and quantifies *Ma* (間) and *Kamae* (構え) via MediaPipe kinematic tracking.**
 
----
+### 📈 Results at a Glance
 
-## 📈 Results at a Glance
+*Kinematic Stability Analysis (Kamae): Proving 'Stillness in Motion'*
+<img width="3036" height="1651" alt="cog_stability_plot" src="https://github.com/user-attachments/assets/6a832cfd-97f3-48ec-8815-e44418aed59b" />
 
-*GAN‑based restoration: original (left) vs. upscaled (right)*
+*Detection of Ma (間): Quantifying Dramatic Tension via Kinematic Velocity*
+<img width="3528" height="1884" alt="ma_detection_plot" src="https://github.com/user-attachments/assets/ce5d2843-61cf-43b1-a7ea-0e21dd082878" />
 
-<img width="800" alt="gan_restoration_comparison" src="https://via.placeholder.com/800x400?text=GAN+Restoration+Example+(add+your+image+here)" />
+*MediaPipe pose overlay locked onto the Lion Dancer (Overcoming Costume Occlusion)*
+<img width="640" height="360" alt="pose_overlay_sample" src="https://github.com/user-attachments/assets/c698ff51-8e7c-4052-8d06-a57551d6e476" />
 
-*MediaPipe pose overlay on a *Shakkyō* performance frame*
 
-<img width="800" alt="mediapipe_pose_overlay" src="https://via.placeholder.com/800x400?text=33+Landmark+Overlay+(add+your+image+here)" />
+*GAN‑based restoration (Real-ESRGAN)*
+> *[Phase 2: Archival upscaling in progress. Restored visual comparisons coming soon.]*
 
-*Center of Gravity trajectory over one *Ma* interval*
+### 🧠 How It Works
+1. **AI Restomodding (GANs):** We use **Real‑ESRGAN** to upscale and denoise historical Noh performance videos. This preserves fine details of costumes, masks, and stage geometry.
+2. **Kinematic Motion Tracking:** A custom **33‑landmark pose model** extracts body keypoints to track:
+   - **Center of Gravity (CoG)** – per‑frame calculation to detect weight shifts.
+   - **Ma (間)** – quantified as the duration of minimal CoG displacement (the "pregnant pause").
+   - **Kamae (構え)** – stability index from landmark variance (posture rigidity).
 
-<img width="800" alt="cog_trajectory_ma" src="https://via.placeholder.com/800x400?text=CoG+Trajectory+Analysis+(add+your+image+here)" />
-
----
-
-## 🧠 How It Works
-
-### 1. AI Restomodding (GANs)
-We use **Real‑ESRGAN** to upscale and denoise historical Noh performance videos. This preserves fine details of costumes, masks, and stage geometry that are essential for kinematic analysis.
-
-### 2. Kinematic Motion Tracking (MediaPipe + OpenCV)
-A **33‑landmark pose model** extracts body keypoints from each frame. We track:
-- **Center of Gravity (CoG)** – per‑frame calculation to detect weight shifts  
-
-  $$X_{CoG} = \frac{\sum m_i x_i}{\sum m_i}$$
-
-- **Ma (間)** – quantified as the duration of minimal CoG displacement (the “pregnant pause”)
-- **Kamae (構え)** – stability index from landmark variance (posture rigidity)
-
-All processing is done with respect to **Kita school** aesthetics and the *Shakkyō* (石橋) play’s dramatic structure.
-
----
-
-## 🏗️ Repository Structure
-```
-noh-motion-restoration/
-├── analysis/ # CoG, Ma interval, Kamae stability
-│ ├── compute_cog.py
-│ └── ma_interval_detection.py
-├── motion_tracking/ # MediaPipe + OpenCV pipeline
-│ ├── pose_extractor.py
-│ └── landmark_visualizer.py
-├── restoration/ # Real‑ESRGAN upscaling
-│ ├── esrgan_upscale.py
-│ └── video_reassembly.py
-├── data/ # Sample frames & landmarks (no full videos)
-│ ├── sample_frames.zip
-│ └── cog_trajectory.csv
-├── results/ # Output GIFs, charts, overlay samples
-├── docs/ # Ethics statement, technical abstract, BibTeX
-├── requirements/ # requirements.txt, environment.yml
-├── .github/workflows/ # (future) CI smoke test
-├── README.md # This file (trilingual)
-└── LICENSE
-```
-
----
-
-## 🚀 Quick Start
-
-### 1. Clone & Install
+### 🚀 Quick Start
 ```bash
-git clone https://github.com/johannesbambang/noh-motion-restoration.git
+git clone [https://github.com/johannesbambang/noh-motion-restoration.git](https://github.com/johannesbambang/noh-motion-restoration.git)
 cd noh-motion-restoration
-python -m venv .venv
-# Activate virtual environment:
-# Windows: .venv\Scripts\activate
-# macOS/Linux: source .venv/bin/activate
-pip install -r requirements/requirements.txt
+python -m venv noh_env
+# Activate virtual environment (Windows): .\noh_env\Scripts\activate
+pip install -r requirements.txt
+
+# Run Pose Extraction
+python motion_tracking/final_pose.py --input data/shakkyo_cropped_strict.mp4<img width="3036" height="1651" alt="cog_stability_plot" src="https://github.com/user-attachments/assets/bc945ed3-c09b-4ab5-b47a-404b8baae6f8" />
+
 ```
 
-### 2. Run Motion Tracking on a Sample Frame
+---
+
+## Bahasa Indonesia (ID)
+
+**Pipeline AI interdisipliner yang merestorasi arsip sejarah Noh menggunakan GAN dan mengukur Ma (間) serta Kamae (構え) melalui pelacakan kinematika MediaPipe.**
+
+### 📈 Sekilas Hasil
+
+*Analisis Stabilitas Kinematik (Kamae): Membuktikan 'Ketenangan dalam Gerakan'*
+<img width="3036" height="1651" alt="cog_stability_plot" src="https://github.com/user-attachments/assets/6a832cfd-97f3-48ec-8815-e44418aed59b" />
+
+*Deteksi Ma (間): Mengukur Ketegangan Dramatis melalui Kecepatan Kinematik*
+<img width="3528" height="1884" alt="ma_detection_plot" src="https://github.com/user-attachments/assets/ce5d2843-61cf-43b1-a7ea-0e21dd082878" />
+
+*Pelacakan Pose MediaPipe pada Penari Singa (Mengatasi Halangan Kostum)*
+<img width="640" height="360" alt="pose_overlay_sample" src="https://github.com/user-attachments/assets/c698ff51-8e7c-4052-8d06-a57551d6e476" />
+
+### 🧠 Cara Kerja
+1. **Restorasi AI (GANs):** Kami menggunakan **Real‑ESRGAN** untuk meningkatkan resolusi (upscale) dan mengurangi noise pada video arsip pertunjukan Noh. Hal ini melestarikan detail kostum, topeng, dan geometri panggung.
+2. **Pelacakan Gerak Kinematik:** Model pose dengan **33 titik tubuh (landmarks)** mengekstrak titik-titik penting tubuh untuk melacak:
+
+- **Pusat Gravitasi (CoG)** – dihitung per frame untuk mendeteksi perpindahan berat badan.
+- **Ma (間)** – diukur sebagai durasi pergerakan CoG paling minimal ("jeda dramatis").
+- **Kamae (構え)** – indeks stabilitas dari variasi titik tubuh (kekakuan postur).
+
+### 🚀 Mulai Cepat
 ```bash
-python motion_tracking/pose_extractor.py --input data/sample_frames.zip --output results/pose_overlay/
+git clone [https://github.com/johannesbambang/noh-motion-restoration.git](https://github.com/johannesbambang/noh-motion-restoration.git)
+cd noh-motion-restoration
+python -m venv noh_env
+# Aktivasi virtual environment (Windows): .\noh_env\Scripts\activate
+pip install -r requirements.txt
+
+# Ekstraksi Pose
+python motion_tracking/final_pose.py --input data/shakkyo_cropped_strict.mp4
+
 ```
 
-### 3. Compute Center of Gravity Trajectory
+---
+## 日本語 (JA)
+
+**GANを用いて歴史的な能楽アーカイブを修復し、MediaPipeの運動学トラッキングを通じて「間」と「構え」を定量化する学際的なAIパイプライン。**
+
+### 📈 結果の概要
+*運動学的安定性分析（構え）：「動の中の静」の証明*
+<img width="3036" height="1651" alt="cog_stability_plot" src="https://github.com/user-attachments/assets/6a832cfd-97f3-48ec-8815-e44418aed59b" />
+
+*「間」の検出：運動速度による劇的緊張の定量化*
+<img width="3528" height="1884" alt="ma_detection_plot" src="https://github.com/user-attachments/assets/ce5d2843-61cf-43b1-a7ea-0e21dd082878" />
+
+*獅子舞へのMediaPipeポーズオーバーレイ（衣装によるオクルージョンの克服）*
+<img width="640" height="360" alt="pose_overlay_sample" src="https://github.com/user-attachments/assets/c698ff51-8e7c-4052-8d06-a57551d6e476" />
+
+### 🧠 仕組み
+1. **AIによる修復（GAN）:** **Real-ESRGAN** を使用して、歴史的な能楽映像をアップスケールし、ノイズを除去します。これにより、装束、面、舞台の精細なディテールが保存されます。
+
+2. **運動学的モーショントラッキング:** カスタムの**33ランドマークポーズ**モデルが身体のキーポイントを抽出し、以下を追跡します：
+
+- **重心（CoG）**: 体重移動を検出するためのフレームごとの計算。
+
+- **間（Ma）**: 重心の移動が最小となる期間（劇的な休止）として定量化。
+
+- **構え（Kamae）**: ランドマークの分散から算出される安定性指標（姿勢の剛性）。
+
+### 🚀 クイックスタート
 ```bash
-python analysis/compute_cog.py --landmarks data/landmarks_raw.json --output results/cog_plot.png
+git clone [https://github.com/johannesbambang/noh-motion-restoration.git](https://github.com/johannesbambang/noh-motion-restoration.git)
+cd noh-motion-restoration
+python -m venv noh_env
+# 仮想環境の有効化 (Windows): .\noh_env\Scripts\activate
+pip install -r requirements.txt
+
+# ポーズ抽出の実行
+python motion_tracking/final_pose.py --input data/shakkyo_cropped_strict.mp4
 ```
 
-### 4. (Optional) GAN Restoration on a Low‑Res Clip
-```bash
-python restoration/esrgan_upscale.py --input path/to/lowres_video.mp4 --output results/restored.mp4
-```
+---
+## 📚 Datasets & Fair Use
+We use only promotional excerpts for academic research under fair use:
 
-📚 Datasets & Fair Use
-We use only promotional excerpts (fair use) for academic research:
-
-Shiotsu Keisuke (Kita school) – YouTube
-
-WCP2018 Shakkyō – YouTube
+- **Shiotsu Keisuke** (Kita school)
+- **WCP2018 Shakkyō**
 
 Full videos are not stored in this repository. See docs/ethics_statement.md for full data provenance and permissions.
 
-📖 Trilingual Documentation
-English – full technical details (above)
+## 📄 License & Citation
 
-Bahasa Indonesia – ringkasan proyek dan petunjuk cepat (di bawah)
-
-日本語 – プロジェクト概要とクイックスタート (下記)
-
-🇮🇩 Bahasa Indonesia
-Ringkasan Proyek
-Proyek ini menggunakan GAN (Real‑ESRGAN) untuk merestorasi video arsip Noh dan MediaPipe untuk melacak 33 titik kerangka tubuh guna menganalisis Ma (jeda) dan Kamae (postur). Pusat Gravitasi dihitung per frame dengan rumus di atas.
-
-Mulai Cepat
-bash
-git clone https://github.com/johannesbambang/noh-motion-restoration.git
-cd noh-motion-restoration
-pip install -r requirements/requirements.txt
-python motion_tracking/pose_extractor.py --input data/sample_frames.zip
-Catatan: Video penuh tidak disertakan. Lihat docs/ethics_statement.md untuk detail etika.
-
-🇯🇵 日本語
-プロジェクト概要
-本プロジェクトは Real‑ESRGAN による能楽映像の修復と、MediaPipe による33点の身体ランドマーク追跡を組み合わせ、間 と 構え を定量化します。重心の計算式は上記の通りです。
-
-クイックスタート
-bash
-git clone https://github.com/johannesbambang/noh-motion-restoration.git
-cd noh-motion-restoration
-pip install -r requirements/requirements.txt
-python motion_tracking/pose_extractor.py --input data/sample_frames.zip
-注記: 完全な動画は含まれません。倫理声明は docs/ethics_statement.md をご覧ください。
-
-📄 License & Citation
-This project is released under the MIT License.
-If you use this code or data in your research, please cite:
-
-bibtex
-@software{wirawan2025noh,
+This project is released under the MIT License. If you use this code or data in your research, please cite:
+```bash
+@software{wirawan2026noh,
   author = {Wirawan, Johannes Bambang},
-  title = {Digital Restoration \& Motion Capture: Preserving the Essence of Noh Theater via AI},
-  year = {2025},
-  url = {https://github.com/johannesbambang/noh-motion-restoration},
+  title = {Digital Restoration & Motion Capture: Preserving the Essence of Noh Theater via AI},
+  year = {2026},
+  url = {[https://github.com/johannesbambang/noh-motion-restoration](https://github.com/johannesbambang/noh-motion-restoration)},
   license = {MIT}
 }
-🤝 Contact & Event
-Researcher: Johannes Bambang Wirawan
+```
 
-Affiliation: Master in Robotics, Tech Global University
-
-Email: jbambangwirawan@gmail.com
-
-Instagram: @johanneswirawan
-
-Event: 1SKS Students Edition 2026 – Instagram Live @JF_Jakarta
-
-<p align="center"> 🎭 <i>“Preserving the unseen pause between movements.”</i> 🎭<br> Made with 🔬 by <a href="https://github.com/johannesbambang">johannesbambang</a> </p> ```
+---
+## 🤝 Contact & Event
+- **Researcher:** Johannes Bambang Wirawan
+- **Affiliation:** Master in Robotics, Tech Global University
+- **Event:** 1SKS Students Edition 2026 – Instagram Live @JF_Jakarta
